@@ -9,4 +9,5 @@ public interface IManagerRepository
 	ICollection<Manager> GetManagersBySalary(decimal minSalary, decimal maxSalary);
 	ICollection<Manager> GetManagersBySeniority(Seniority seniority);
 	ICollection<Manager> GetManagersByDate(DateOnly minDate, DateOnly maxDate);
+	bool ChangeSeniority(Seniority seniority);
 }

@@ -12,4 +12,5 @@ public interface IEmployeeRepository
 	bool EmployeeExists(int employeeId);
 	bool DeleteEmployee(int employeeId);
 	bool PostEmployee(Employee newEmployee);
+	bool ChangeSeniority(int employeeId, Seniority seniority);
 }

@@ -11,6 +11,4 @@ public interface ITaskRepository
 	bool PostTask(Task newTask);
 	bool DeleteTask(int taskId);
 	bool UpdateTask(int taskId);
-
-
 }
