@@ -6,7 +6,7 @@ namespace EmployeeManagerAPI.Models.Workers;
 public class Employee
 {
 	[Key]
-	public int EmployeeId { get; set; }
+	public int Id { get; set; }
 
 	[Required]
 	[MaxLength(60)]
