@@ -6,7 +6,7 @@ namespace EmployeeManagerAPI.Models.Workers;
 public class Manager
 {
 	[Key]
-	public int ManagerId { get; set; }
+	public int Id { get; set; }
 	[Required]
 	[MaxLength(50)]
 	public string? Name { get; set; }

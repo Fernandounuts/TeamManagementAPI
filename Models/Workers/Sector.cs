@@ -5,7 +5,7 @@ namespace EmployeeManagerAPI.Models.Workers;
 public class Sector
 {
 	[Key]
-	public int SectorId { get; set; }
+	public int Id { get; set; }
 	[Required]
 	[MaxLength(60)]
 	public string? SectorName { get; set; }

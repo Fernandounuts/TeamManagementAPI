@@ -6,7 +6,7 @@ namespace EmployeeManagerAPI.Models.Tasks;
 public class Task
 {
 	[Key]
-	public int TaskId { get; set; }
+	public int Id { get; set; }
 	[MaxLength(60)]
 	[Required]
 	public string? TaskName { get; set; }
