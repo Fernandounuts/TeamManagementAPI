@@ -1,24 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
+using EmployeeManagerAPI.Models.Workers.AbstractClasses;
 
 namespace EmployeeManagerAPI.Models.Workers;
 
-public class Employee
+public class Employee : AbstractWorker
 {
-	[Key]
-	public int Id { get; set; }
 
-	[Required]
-	[MaxLength(60)]
-	public string? Name { get; set; }
-	[Required]
-	public double Salary { get; set; }
-	[Required]
-	public Seniority Seniority { get; set; }
-	[Required]
-	public DateOnly HireDate { get; set; }
-
-	public DateOnly TerminationDate { get; set; }
 	[Required]
 	public ICollection<Task>? Tasks { get; set; }
 
