@@ -43,9 +43,14 @@ public class EmployeeRepository : IEmployeeRepository
 		return _context.Employees.Any(i => i.Id == employeeId);
 	}
 
-	public Task<ICollection<Employee>> GetEmployeesByHireDate(DateOnly minDate, DateOnly maxDate)
+	public async Task<ICollection<Employee>> GetEmployeesByHireDate(DateOnly minDate, DateOnly maxDate)
 	{
-		throw new NotImplementedException();
+		var employeeArr = await _context.Employees.Where(e => e.HireDate >= minDate && e.HireDate <= maxDate).ToArrayAsync();
+		if (employeeArr == null)
+		{
+			throw new NullReferenceException("No employees were found between those dates");
+		}
+		return employeeArr;
 	}
 
 	public async Task<ICollection<Employee>> GetEmployeesByName(string name)
@@ -86,24 +91,14 @@ public class EmployeeRepository : IEmployeeRepository
 		{
 			throw new NullReferenceException("No new employee to be posted in the database was specified");
 		}
-		try
-		{
-			_context.Employees.Add(newEmployee);
-			_context.SaveChangesAsync();
-			return true;
-		}
-		catch (Exception ex)
-		{
-			return false;
-		}
+		_context.Employees.Add(newEmployee);
+		_context.SaveChangesAsync();
+		return true;
+
 	}
 
 	public async Task<Employee> GetEmployeeById(int employeeId)
 	{
-		if (employeeId == null)
-		{
-			throw new NullReferenceException("An employee Id wasn't specified");
-		}
 		var employee = await _context.Employees.Where(e => e.Id == employeeId).FirstOrDefaultAsync();
 
 		if (employee == null)
